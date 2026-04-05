@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>墨息·数字转化系统 </title>
+    <style>
+        :root {
+            /* 纸张颜色仅作为网页背景展示，不存入 Canvas */
+            --paper-bg: #f2f0e9;
+            --ink-color: #1a1a1a;
+        }
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            /* 在 CSS 层设置背景色，这样 Canvas 保持透明 */
+            background-color: var(--paper-bg);
+            background-image: 
+                radial-gradient(circle at 2px 2px, rgba(0,0,0,0.02) 1px, transparent 0);
+            background-size: 24px 24px;
+            overflow: hidden; touch-action: none;
+            cursor: crosshair;
+        }
+        canvas { 
+            display: block; 
+            touch-action: none; 
+            background: transparent; /* 确保 Canvas 元素本身透明 */
+        }
+        #ui {
+            position: fixed; top: 20px; right: 20px;
+            display: flex; gap: 10px; z-index: 10;
+        }
+        .btn {
+            background: rgba(255,255,255,0.9); border: 1px solid #999; 
+            padding: 8px 18px; border-radius: 4px;
+            font-family: "Noto Serif SC", serif; cursor: pointer;
+            font-size: 13px; transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .btn:hover { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+        #indicator {
+            position: fixed; bottom: 20px; left: 20px;
+            font-family: "Noto Serif SC", serif; font-size: 12px; color: #888;
+            letter-spacing: 1px;
+        }
+        .tag {
+            background: #842; color: #fff; padding: 2px 6px; border-radius: 2px; margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="ui">
+        <button class="btn" onclick="resetCanvas()">清稿</button>
+        <button class="btn" onclick="saveArt()" style="font-weight: bold;">导出透明PNG</button>
+    </div>
+
+    <div id="indicator">
+        <span class="tag">透明模式</span> 墨迹粗细已优化 · 实时渲染
+    </div>
+    
+    <canvas id="brushCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('brushCanvas');
+        // 注意：这里 alpha 必须为 true 以支持透明度导出
+        const ctx = canvas.getContext('2d', { alpha: true });
+        
+        let isDrawing = false;
+        let lastX, lastY;
+        let bristles = []; 
+
+        function initBristles(count) {
+            bristles = [];
+            for (let i = 0; i < count; i++) {
+                const theta = Math.random() * Math.PI * 2;
+                // 维持之前的细笔触分布算法
+                const r = Math.pow(Math.random(), 1.6); 
+                bristles.push({
+                    r: r,
+                    theta: theta,
+                    size: Math.random() * 0.35 + 0.25 
+                });
+            }
+        }
+
+        function resize() {
+            // 保存当前画布内容（如果有的话）
+            const tempImg = canvas.toDataURL();
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            // 重新调整后不填充任何背景色，保持透明
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // 如果需要重绘内容可以加在这里，但通常重置窗口即清空
+        }
+
+        function getMoveData(e) {
+            const rect = canvas.getBoundingClientRect();
+            let prs = e.pressure !== undefined && e.pressure !== 0 ? e.pressure : 0.5;
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top,
+                pressure: prs
+            };
+        }
+
+        function start(e) {
+            isDrawing = true;
+            const data = getMoveData(e);
+            lastX = data.x;
+            lastY = data.y;
+            initBristles(45); // 稍微增加粒子，确保细线不碎
+        }
+
+        function move(e) {
+            if (!isDrawing) return;
+            const data = getMoveData(e);
+            
+            const dx = data.x - lastX;
+            const dy = data.y - lastY;
+            const distance = Math.hypot(dx, dy);
+            if (distance < 0.5) return;
+
+            const velocity = Math.min(distance / 10, 6);
+            const pressure = data.pressure;
+            
+            // 维持细笔触设定：最大半径 11
+            const baseRadius = 1 + (pressure * 11);
+            const steps = Math.ceil(distance / 0.5); 
+            
+            for (let s = 0; s < steps; s++) {
+                const t = s / steps;
+                const curX = lastX + dx * t;
+                const curY = lastY + dy * t;
+
+                bristles.forEach(b => {
+                    const offsetX = Math.cos(b.theta) * b.r * baseRadius;
+                    const offsetY = Math.sin(b.theta) * b.r * baseRadius;
+                    
+                    if (velocity > 1.5 && Math.random() < (velocity * 0.12)) return;
+
+                    const alpha = (0.3 + (pressure * 0.5)) * (1 - velocity * 0.1);
+                    if (alpha <= 0.01) return;
+
+                    ctx.fillStyle = `rgba(26, 26, 26, ${alpha})`;
+                    
+                    ctx.beginPath();
+                    const pSize = b.size * (1 + pressure * 1.1);
+                    ctx.ellipse(curX + offsetX, curY + offsetY, pSize, pSize * 0.7, Math.atan2(dy, dx), 0, Math.PI * 2);
+                    ctx.fill();
+                });
+            }
+
+            lastX = data.x;
+            lastY = data.y;
+        }
+
+        function end() {
+            isDrawing = false;
+        }
+
+        function resetCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function saveArt() {
+            // 直接导出，因为背景没画东西，所以就是透明的
+            const dataUrl = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.download = `墨迹_${new Date().getTime()}.png`;
+            link.href = dataUrl;
+            link.click();
+        }
+
+        window.onload = () => {
+            resize();
+            window.addEventListener('resize', resize);
+            canvas.addEventListener('pointerdown', start);
+            window.addEventListener('pointermove', move);
+            window.addEventListener('pointerup', end);
+            canvas.addEventListener('contextmenu', e => e.preventDefault());
+        };
+    </script>
+</body>
+</html>
