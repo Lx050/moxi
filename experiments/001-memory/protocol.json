@@ -1,0 +1,23 @@
+{
+  "id": "001-memory",
+  "mechanism": "history-dependent ink state with a direct-mapping ablation",
+  "hypothesis": "After contrasting histories, identical probe input preserves a measurable state difference which later converges.",
+  "representation": "hand-designed-state-not-learned-latent-or-world-model",
+  "input_source": "synthetic",
+  "fps": 30,
+  "history_seconds": 6,
+  "probe_seconds": 30,
+  "histories": {
+    "quiet": { "qi": 0.1, "xin": 0.9, "sheng": 0.1 },
+    "active": { "qi": 0.9, "xin": 0.1, "sheng": 0.9 }
+  },
+  "probe": { "qi": 0.5, "xin": 0.5, "sheng": 0.5 },
+  "targets": {
+    "gap_at_1s_min": 0.1,
+    "gap_at_30s_max": 0.001,
+    "baseline_gap_max": 1e-12,
+    "state_bounds_min": 0,
+    "state_bounds_max": 1
+  },
+  "interpretation": "These are engineering checks on synthetic inputs, not human efficacy, sensor accuracy, TouchDesigner runtime, or model prediction results."
+}

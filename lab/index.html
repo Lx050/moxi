@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>墨息 · 001 墨迹记忆</title>
+<style>
+  :root { color-scheme: light; font: 16px/1.7 system-ui; color: #252523; background: #eeece4; }
+  body { max-width: 1080px; margin: auto; padding: 30px 20px; }
+  h1 { font-family: serif; letter-spacing: .12em; font-weight: 500; }
+  .controls { display: flex; flex-wrap: wrap; gap: 18px; padding: 20px 0; }
+  label { display: grid; gap: 6px; }
+  button { padding: 10px 16px; background: #faf9f4; border: 1px solid #88867c; cursor: pointer; }
+  .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  canvas { display: block; width: 100%; background: #f9f7ef; border: 1px solid #d7d3c7; }
+  output, .note { color: #626258; } output { display: block; }
+  @media(max-width: 640px) { .pair { grid-template-columns: 1fr; } }
+</style>
+<h1>墨息 · 墨迹记忆</h1>
+<p>先选择一段“历史”，再回到同一组输入。观察两侧墨迹如何响应。</p>
+<div class="controls">
+  <label>气 · 输入强度（模拟）<input id="qi" type="range" min="0" max="1" step=".01" value=".5"></label>
+  <label>心 · 动作稳定度（模拟）<input id="xin" type="range" min="0" max="1" step=".01" value=".5"></label>
+  <label>声 · 声音包络（模拟）<input id="sheng" type="range" min="0" max="1" step=".01" value=".5"></label>
+</div>
+<div class="controls">
+  <button id="quiet">注入安静历史</button><button id="active">注入活跃历史</button>
+  <button id="probe">相同输入</button><button id="reset">重置</button>
+  <button id="record">下载本次记录</button>
+</div>
+<div class="pair">
+  <section><h2>即时映射</h2><canvas id="direct" width="480" height="320"></canvas></section>
+  <section><h2>带记忆的状态</h2><canvas id="memory" width="480" height="320"></canvas></section>
+</div>
+<output id="status" aria-live="polite"></output>
+<p class="note">001 工程原型。当前三个输入均为手动模拟；“心”不代表心理状态或心率。记忆由显式时间常数控制，尚非学习潜空间或世界模型。记录仅在内存中，点击后下载；页面不访问摄像头、麦克风或外部模型。</p>
+<script type="module" src="./main.mjs"></script>
+</html>

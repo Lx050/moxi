@@ -1,0 +1,12 @@
+{
+  "name": "moxi-interaction-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "experiment": "node scripts/run-experiment.mjs",
+    "serve": "node scripts/serve.mjs",
+    "osc": "node scripts/osc-replay.mjs"
+  },
+  "engines": { "node": ">=22" }
+}
