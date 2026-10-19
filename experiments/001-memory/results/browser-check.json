@@ -1,0 +1,26 @@
+{
+  "observed_at": "2026-10-19T15:06:51.558751+00:00",
+  "method": "Codex CUA browser observations",
+  "url": "http://127.0.0.1:8765/lab/index.html",
+  "observed": [
+    "root redirects to correct lab module URL",
+    "state values and row count update",
+    "active history button changes state",
+    "quiet history button changes state"
+  ],
+  "screenshot": "browser.png",
+  "not_tested": [
+    "human efficacy",
+    "real sensor inference",
+    "TouchDesigner runtime",
+    "AIGC generation"
+  ],
+  "http_checks": {
+    "root_redirect": 302,
+    "lab_html": 200,
+    "lab_module": 200,
+    "state_module": 200,
+    "git_config_blocked": 404,
+    "agent_instructions_blocked": 404
+  }
+}

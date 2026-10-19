@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: held-input state is sample-rate invariant
+ok 1 - held-input state is sample-rate invariant
+  ---
+  duration_ms: 3.509833
+  type: 'test'
+  ...
+# Subtest: same input retains history while direct baseline is history independent
+ok 2 - same input retains history while direct baseline is history independent
+  ---
+  duration_ms: 1.37275
+  type: 'test'
+  ...
+# Subtest: reject corrupt samples without mutating the previous state
+ok 3 - reject corrupt samples without mutating the previous state
+  ---
+  duration_ms: 5.441125
+  type: 'test'
+  ...
+# Subtest: all extreme input combinations remain bounded and converge
+ok 4 - all extreme input combinations remain bounded and converge
+  ---
+  duration_ms: 5.365209
+  type: 'test'
+  ...
+# Subtest: MediaPipe pose adapter rejects missing/occluded data and cancels translation
+ok 5 - MediaPipe pose adapter rejects missing/occluded data and cancels translation
+  ---
+  duration_ms: 0.658667
+  type: 'test'
+  ...
+# Subtest: conditioning describes values without claiming model execution
+ok 6 - conditioning describes values without claiming model execution
+  ---
+  duration_ms: 0.297417
+  type: 'test'
+  ...
+# Subtest: OSC loopback receives correctly aligned address, type tag and big-endian float
+ok 7 - OSC loopback receives correctly aligned address, type tag and big-endian float
+  ---
+  duration_ms: 6.830458
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 142.71525

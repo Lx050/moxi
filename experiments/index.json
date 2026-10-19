@@ -8,12 +8,25 @@
       "date": "2026-10-19",
       "mechanism": "history-dependent explicit ink state",
       "novelty_key": "same-probe-different-history-vs-memoryless-baseline",
-      "status": "implementation_ready_validation_pending",
+      "status": "synthetic_engineering_validated_hardware_and_human_pending",
       "protocol": "experiments/001-memory/protocol.json",
       "result": "experiments/001-memory/results/report.json",
       "sensor_data": "synthetic_only",
-      "limitations": ["not a learned representation", "no human study", "TouchDesigner runtime pending", "MediaPipe live inference pending", "AIGC generation pending"],
-      "next": "A reproducible target-tracking task to assess lag/overshoot before learning a representation or adding a world model."
+      "limitations": [
+        "not a learned representation",
+        "no human study",
+        "TouchDesigner runtime pending",
+        "MediaPipe live inference pending",
+        "AIGC generation pending"
+      ],
+      "next": "A reproducible target-tracking task to assess lag/overshoot before learning a representation or adding a world model.",
+      "summary_metrics": {
+        "gap_at_1s": 0.4275330989593496,
+        "gap_at_30s": 1.5702286963463198e-05,
+        "baseline_gap": 0,
+        "state_bounds_ok": true,
+        "core_step_p95_ms": 0.0004999999999988347
+      }
     }
   ]
 }

@@ -1,0 +1,55 @@
+{
+  "experiment": "001-memory",
+  "executed_at": "2026-10-19T15:06:10.309Z",
+  "runtime": "v26.5.0",
+  "source_commit_before_run": "25d464e5cc1f361a79d523f578b8c93aa6707168",
+  "source_sha256": {
+    "src/state.mjs": "4e0a6fbe3aff20ce8c8e67cedfda143bcea5a007c02edd74e74ebf9f7b3a271a",
+    "scripts/run-experiment.mjs": "e1511a1bfb5e7bbee52e69bf8e8dfce228854e3c4a42f2ba61db65f53257dbe8",
+    "experiments/001-memory/protocol.json": "8f5b54969b67008ba5f4f63b58a491e325ae007c08f84d065f136eba4edc3228"
+  },
+  "trace_sha256": "15dd5235e71240b9d5b2d65bc4e94d72947b457aa165c8916d5b7fd9b33cfb19",
+  "data_kind": "synthetic",
+  "parameters": {
+    "tau_seconds": [
+      0.35,
+      1.2,
+      3
+    ],
+    "fps": 30
+  },
+  "metrics": {
+    "gap_at_1s": 0.4275330989593496,
+    "gap_at_30s": 0.000015702286963463198,
+    "baseline_gap": 0,
+    "state_bounds_ok": true,
+    "core_step_p95_ms": 0.0004999999999988347
+  },
+  "checks": {
+    "history_retention": true,
+    "convergence": true,
+    "baseline_independence": true,
+    "bounds": true
+  },
+  "engineering_checks_passed": true,
+  "human_validation": "not_run",
+  "touchdesigner_runtime": "not_run",
+  "mediapipe_live_inference": "not_run",
+  "aigc_generation": "not_run",
+  "conditioning_example": {
+    "schema": "moxi-conditioning-v1",
+    "model": "hand-designed-state",
+    "controls": {
+      "energy": 0.5229730458520088,
+      "turbulence": 0.6712038136774946,
+      "saturation": 0.5754258846096744
+    },
+    "generation": {
+      "seed": 17,
+      "prompt": "monochrome ink on warm paper",
+      "strength": 0.351399059613386
+    },
+    "execution": "conditioning_only_no_model_called"
+  },
+  "next_iteration": "Measure controllability and overshoot versus direct mapping; first add a reproducible target-tracking task. Do not call this a learned world model."
+}

@@ -1,0 +1,14 @@
+{
+  "automation_id": "automation-2",
+  "kind": "heartbeat",
+  "thread_id": "01a154ab-a473-70a1-a6d6-4d3d2cff97b0",
+  "repository": "https://github.com/Lx050/moxi",
+  "branch": "codex/weekly-prototypes",
+  "local_checkout": "/Users/maniforld/Documents/Codex/moxi",
+  "cadence": "weekly Monday 09:00; preserve the existing Codex app schedule",
+  "delivery": "implement, run, save evidence, commit and push to this repository",
+  "notifications": "failed_runs_only",
+  "success_behavior": "quiet; no routine chat report or suggestions",
+  "runtime": "Codex desktop heartbeat on the existing host; not a GitHub Actions cloud job",
+  "guidance": "Read AGENTS.md and experiments/index.json first; do not repeat existing mechanisms."
+}
