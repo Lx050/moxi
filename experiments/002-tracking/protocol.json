@@ -12,7 +12,11 @@
   "settle_tail_seconds": 8,
   "command_count": 6,
   "time_constant_scales": [0, 0.25, 0.5, 1, 2],
-  "settling": { "error_fraction_of_step": 0.1, "stable_seconds": 0.5 },
+  "settling": {
+    "error_fraction_of_step": 0.1,
+    "stable_seconds": 0.5,
+    "right_censor_value": "segment_seconds"
+  },
   "targets": {
     "state_min": 0,
     "state_max": 1,

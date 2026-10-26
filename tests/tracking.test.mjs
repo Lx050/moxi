@@ -25,4 +25,8 @@ test('larger time constants do not respond faster and every state remains bounde
   assert.ok(slow.metrics.normalized_rmse >= fast.metrics.normalized_rmse);
   assert.ok([...fast.rows, ...slow.rows].every(row => row.state.every(v => v >= 0 && v <= 1)));
   assert.ok(slow.metrics.censored_transitions >= fast.metrics.censored_transitions);
+  if (slow.metrics.censored_transitions > 0) {
+    assert.equal(slow.metrics.settling_p95_includes_censored_at_segment_limit, true);
+    assert.equal(slow.metrics.settling_p95_seconds, protocol.segment_seconds);
+  }
 });
