@@ -28,5 +28,7 @@ test('larger time constants do not respond faster and every state remains bounde
   if (slow.metrics.censored_transitions > 0) {
     assert.equal(slow.metrics.settling_p95_includes_censored_at_segment_limit, true);
     assert.equal(slow.metrics.settling_p95_seconds, protocol.segment_seconds);
+    assert.equal(slow.metrics.settling_fraction,
+      1 - slow.metrics.censored_transitions / slow.transitions.length);
   }
 });

@@ -98,11 +98,12 @@ export function evaluateScale(protocol, commands, scale) {
   // Right-censored transitions count at the segment limit; never hide their lag from P95.
   const settleTimes = transitions.map(t => t.settled_at_seconds ?? protocol.segment_seconds)
     .sort((a, b) => a - b);
+  const settledCount = transitions.filter(t => t.settled_at_seconds !== null).length;
   const percentile = (values, q) => values.length ? values[Math.min(values.length - 1, Math.ceil(values.length * q) - 1)] : null;
   return { rows, transitions, metrics: {
     normalized_rmse: Math.sqrt(errors.reduce((sum, x) => sum + x * x, 0) / errors.length),
     max_absolute_error: Math.max(...errors.map(Math.abs)),
-    settling_fraction: transitions.length ? settleTimes.length / transitions.length : 1,
+    settling_fraction: transitions.length ? settledCount / transitions.length : 1,
     settling_p95_seconds: percentile(settleTimes, 0.95),
     censored_transitions: transitions.filter(t => t.settling_censored).length,
     settling_p95_includes_censored_at_segment_limit: true,
