@@ -17,6 +17,7 @@ npm run serve
 - [实验索引](experiments/index.json)：机制、状态、去重依据与下一步。
 - [001 墨迹记忆](experiments/001-memory/README.md)：假设、最小实验、指标、风险及迭代判断。
 - [结果](experiments/001-memory/results/report.json)：由实际执行生成；不能把合成输入检查当作真人或设备验收。
+- [002 记忆与目标跟踪](experiments/002-tracking/README.md)：时间尺度、稳定时间与轨迹误差对照。
 - [TouchDesigner / MediaPipe / AIGC 接口](integrations/README.md)。
 
 ## 周度执行约定

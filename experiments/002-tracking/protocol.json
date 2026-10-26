@@ -7,10 +7,10 @@
   "input_source": "seeded_synthetic_step_targets",
   "seed": 20261026,
   "fps": 30,
-  "warmup_seconds": 6,
+  "state_initialization": "reset_each_condition_to_exact_first_target",
   "segment_seconds": 4,
   "settle_tail_seconds": 8,
-  "transition_count": 6,
+  "command_count": 6,
   "time_constant_scales": [0, 0.25, 0.5, 1, 2],
   "settling": { "error_fraction_of_step": 0.1, "stable_seconds": 0.5 },
   "targets": {

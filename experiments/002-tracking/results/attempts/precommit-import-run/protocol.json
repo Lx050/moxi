@@ -1,0 +1,25 @@
+{
+  "id": "002-tracking",
+  "mechanism": "time-constant scaling under a deterministic target-tracking task",
+  "novelty_key": "tracking-pareto-error-settling-lag-vs-history-memory-ablation",
+  "hypothesis": "There is a small non-zero memory time scale that preserves enough history for smooth response while keeping tracking error and settling time within predeclared bounds.",
+  "representation": "hand-designed-state-not-learned-latent-or-world-model",
+  "input_source": "seeded_synthetic_step_targets",
+  "seed": 20261026,
+  "fps": 30,
+  "warmup_seconds": 6,
+  "segment_seconds": 4,
+  "settle_tail_seconds": 8,
+  "transition_count": 6,
+  "time_constant_scales": [0, 0.25, 0.5, 1, 2],
+  "settling": { "error_fraction_of_step": 0.1, "stable_seconds": 0.5 },
+  "targets": {
+    "state_min": 0,
+    "state_max": 1,
+    "baseline_rmse_max": 1e-12,
+    "candidate_rmse_max": 0.08,
+    "candidate_settle_p95_seconds_max": 3,
+    "candidate_settle_fraction_min": 0.8
+  },
+  "interpretation": "Engineering comparison only. Step targets are not user behavior. No real human, sensor, camera, audio, TouchDesigner runtime, or AIGC model is involved. Thresholds are exploratory gates, not user-efficacy claims."
+}

@@ -1,0 +1,15 @@
+{
+  "attempt": "pre-fix npm run experiment:tracking",
+  "observed_at": "2026-10-26T13:01:37Z",
+  "exit_code": 1,
+  "runtime": "Node.js v26.5.0",
+  "source_commit_before_run": "64860d5f92f76f9d9d189a1e2978bbab421fbd52",
+  "source_sha256": {
+    "runner.mjs": "73d3249aad6d064aebd2dfe103d30a220881027cfe5c5a8aa771c6bb940d6a9f",
+    "protocol.json": "19c8fa3b694ab2a2d82d211244f36338787db8e81c36f2c9135a005f4f0cd456"
+  },
+  "observed_error": "TypeError: Cannot destructure property 'qi' of 'undefined' as it is undefined.",
+  "cause": "Protocol was renamed from transition_count to command_count but buildCommands still expected the old field; it returned an empty sequence.",
+  "correction": "buildCommands now accepts command_count and retains transition_count compatibility for the unit fixture.",
+  "stdout_capture": "The failed command output is preserved in the execution record; the exact error and source/protocol snapshots are saved here."
+}
