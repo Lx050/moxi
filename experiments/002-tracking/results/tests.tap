@@ -1,0 +1,22 @@
+
+> test
+> node --test tests/*.test.mjs
+
+✔ held-input state is sample-rate invariant (2.174375ms)
+✔ same input retains history while direct baseline is history independent (0.650459ms)
+✔ reject corrupt samples without mutating the previous state (0.324584ms)
+✔ all extreme input combinations remain bounded and converge (3.178375ms)
+✔ MediaPipe pose adapter rejects missing/occluded data and cancels translation (0.292292ms)
+✔ conditioning describes values without claiming model execution (0.14425ms)
+✔ OSC loopback receives correctly aligned address, type tag and big-endian float (4.717084ms)
+✔ tracking command sequence is deterministic and changes targets (1.135667ms)
+✔ direct mapping has zero tracking error and zero settling delay (1.288667ms)
+✔ larger time constants do not respond faster and every state remains bounded (0.699834ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 83.238958

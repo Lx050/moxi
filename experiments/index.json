@@ -19,7 +19,7 @@
         "MediaPipe live inference pending",
         "AIGC generation pending"
       ],
-      "next": "A reproducible target-tracking task to assess lag/overshoot before learning a representation or adding a world model.",
+      "next": "Use passing scale 0.25 to train and test an action-conditioned transition predictor on held-out input sequences.",
       "summary_metrics": {
         "gap_at_1s": 0.4275330989593496,
         "gap_at_30s": 1.5702286963463198e-05,
@@ -27,6 +27,66 @@
         "state_bounds_ok": true,
         "core_step_p95_ms": 0.0004999999999988347
       }
+    },
+    {
+      "id": "002-tracking",
+      "date": "2026-10-26",
+      "mechanism": "time-constant scaling under deterministic target tracking",
+      "novelty_key": "tracking-pareto-error-settling-lag-vs-history-memory-ablation",
+      "status": "synthetic_engineering_validated_human_and_runtime_pending",
+      "protocol": "experiments/002-tracking/protocol.json",
+      "result": "experiments/002-tracking/results/report.json",
+      "sensor_data": "synthetic_seeded_only",
+      "candidate_scales": [
+        0.25,
+        0.5
+      ],
+      "summary_metrics_by_scale": {
+        "0": {
+          "normalized_rmse": 0,
+          "settling_fraction": 1,
+          "settling_p95_seconds": 0,
+          "censored_transitions": 0,
+          "normalized_overshoot_mean": 0
+        },
+        "1": {
+          "normalized_rmse": 0.07788310479396071,
+          "settling_fraction": 0.2,
+          "settling_p95_seconds": 4,
+          "censored_transitions": 4,
+          "normalized_overshoot_mean": 0
+        },
+        "2": {
+          "normalized_rmse": 0.10189722580899757,
+          "settling_fraction": 0,
+          "settling_p95_seconds": 4,
+          "censored_transitions": 5,
+          "normalized_overshoot_mean": 0
+        },
+        "0.25": {
+          "normalized_rmse": 0.040597849032953756,
+          "settling_fraction": 1,
+          "settling_p95_seconds": 1.3,
+          "censored_transitions": 0,
+          "normalized_overshoot_mean": 0
+        },
+        "0.5": {
+          "normalized_rmse": 0.05776927913753087,
+          "settling_fraction": 1,
+          "settling_p95_seconds": 2.6,
+          "censored_transitions": 0,
+          "normalized_overshoot_mean": 0
+        }
+      },
+      "limitations": [
+        "not learned latent representation",
+        "single seeded synthetic target path",
+        "no human trial",
+        "TouchDesigner runtime not exercised",
+        "MediaPipe live inference not exercised",
+        "AIGC not called"
+      ],
+      "next": "Use passing scale 0.25 to train and test an action-conditioned transition predictor on held-out input sequences."
     }
   ]
 }

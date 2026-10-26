@@ -1,0 +1,294 @@
+{
+  "experiment": "002-tracking",
+  "executed_at": "2026-10-26T13:03:35.701Z",
+  "runtime": "v26.5.0",
+  "source_commit_before_run": "f08a9ac83b5b043fdc8b39721e9896bd768ef256",
+  "source_sha256": {
+    "src/state.mjs": "4e0a6fbe3aff20ce8c8e67cedfda143bcea5a007c02edd74e74ebf9f7b3a271a",
+    "scripts/run-tracking-experiment.mjs": "e608365e6639cbae44fb384d9b48d4a367705c5fda527fc600025b2b2d260d02",
+    "experiments/002-tracking/protocol.json": "19c8fa3b694ab2a2d82d211244f36338787db8e81c36f2c9135a005f4f0cd456"
+  },
+  "trace_sha256": "b3fdccf0fbed1259637bd2f9030c16078f935bd5583f7df7431e5529fba0e7ce",
+  "input_sha256": "d6d8e196329416370724d0f7f18a048e0047ea636957f6f35bebab4700929e8a",
+  "data_kind": "seeded_synthetic_step_targets",
+  "task": {
+    "fps": 30,
+    "transitions": 5,
+    "segment_seconds": 4,
+    "state_initialization": "reset_each_condition_to_exact_first_target",
+    "final_settle_tail_seconds": 8,
+    "command_count": 6,
+    "scales": [
+      0,
+      0.25,
+      0.5,
+      1,
+      2
+    ]
+  },
+  "pre_registered_targets": {
+    "state_min": 0,
+    "state_max": 1,
+    "baseline_rmse_max": 1e-12,
+    "candidate_rmse_max": 0.08,
+    "candidate_settle_p95_seconds_max": 3,
+    "candidate_settle_fraction_min": 0.8
+  },
+  "metrics_by_scale": {
+    "0": {
+      "normalized_rmse": 0,
+      "max_absolute_error": 0,
+      "settling_fraction": 1,
+      "settling_p95_seconds": 0,
+      "censored_transitions": 0,
+      "normalized_overshoot_mean": 0,
+      "core_update_mean_ms": 0.00014439687499998577,
+      "core_update_count": 960
+    },
+    "1": {
+      "normalized_rmse": 0.07788310479396071,
+      "max_absolute_error": 0.5526886471003335,
+      "settling_fraction": 0.2,
+      "settling_p95_seconds": 2.966666666666667,
+      "censored_transitions": 4,
+      "normalized_overshoot_mean": 0,
+      "core_update_mean_ms": 0.0004173687500000245,
+      "core_update_count": 960
+    },
+    "2": {
+      "normalized_rmse": 0.10189722580899757,
+      "max_absolute_error": 0.5885372295948252,
+      "settling_fraction": 0,
+      "settling_p95_seconds": null,
+      "censored_transitions": 5,
+      "normalized_overshoot_mean": 0,
+      "core_update_mean_ms": 0.00024961250000013295,
+      "core_update_count": 960
+    },
+    "0.25": {
+      "normalized_rmse": 0.040597849032953756,
+      "max_absolute_error": 0.5011103652424167,
+      "settling_fraction": 1,
+      "settling_p95_seconds": 1.3,
+      "censored_transitions": 0,
+      "normalized_overshoot_mean": 0,
+      "core_update_mean_ms": 0.0004383687499999659,
+      "core_update_count": 960
+    },
+    "0.5": {
+      "normalized_rmse": 0.05776927913753087,
+      "max_absolute_error": 0.5300258612890463,
+      "settling_fraction": 1,
+      "settling_p95_seconds": 2.6,
+      "censored_transitions": 0,
+      "normalized_overshoot_mean": 0,
+      "core_update_mean_ms": 0.000291976041666675,
+      "core_update_count": 960
+    }
+  },
+  "transitions_by_scale": {
+    "0": [
+      {
+        "segment": 1,
+        "distance": 0.3509985754956849,
+        "settled_at_seconds": 0,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 2,
+        "distance": 0.3509985754956849,
+        "settled_at_seconds": 0,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 3,
+        "distance": 0.7641989269817121,
+        "settled_at_seconds": 0,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 4,
+        "distance": 0.447213595499958,
+        "settled_at_seconds": 0,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 5,
+        "distance": 0.447213595499958,
+        "settled_at_seconds": 0,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      }
+    ],
+    "1": [
+      {
+        "segment": 1,
+        "distance": 0.3509985754956849,
+        "settled_at_seconds": null,
+        "settling_censored": true,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 2,
+        "distance": 0.3509985754956849,
+        "settled_at_seconds": null,
+        "settling_censored": true,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 3,
+        "distance": 0.7641989269817121,
+        "settled_at_seconds": 2.966666666666667,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 4,
+        "distance": 0.447213595499958,
+        "settled_at_seconds": null,
+        "settling_censored": true,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 5,
+        "distance": 0.447213595499958,
+        "settled_at_seconds": null,
+        "settling_censored": true,
+        "normalized_overshoot": 0
+      }
+    ],
+    "2": [
+      {
+        "segment": 1,
+        "distance": 0.3509985754956849,
+        "settled_at_seconds": null,
+        "settling_censored": true,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 2,
+        "distance": 0.3509985754956849,
+        "settled_at_seconds": null,
+        "settling_censored": true,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 3,
+        "distance": 0.7641989269817121,
+        "settled_at_seconds": null,
+        "settling_censored": true,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 4,
+        "distance": 0.447213595499958,
+        "settled_at_seconds": null,
+        "settling_censored": true,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 5,
+        "distance": 0.447213595499958,
+        "settled_at_seconds": null,
+        "settling_censored": true,
+        "normalized_overshoot": 0
+      }
+    ],
+    "0.25": [
+      {
+        "segment": 1,
+        "distance": 0.3509985754956849,
+        "settled_at_seconds": 1.3,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 2,
+        "distance": 0.3509985754956849,
+        "settled_at_seconds": 1.3,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 3,
+        "distance": 0.7641989269817121,
+        "settled_at_seconds": 0.8,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 4,
+        "distance": 0.447213595499958,
+        "settled_at_seconds": 1.1,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 5,
+        "distance": 0.447213595499958,
+        "settled_at_seconds": 1.1,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      }
+    ],
+    "0.5": [
+      {
+        "segment": 1,
+        "distance": 0.3509985754956849,
+        "settled_at_seconds": 2.6,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 2,
+        "distance": 0.3509985754956849,
+        "settled_at_seconds": 2.5,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 3,
+        "distance": 0.7641989269817121,
+        "settled_at_seconds": 1.5666666666666667,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 4,
+        "distance": 0.447213595499958,
+        "settled_at_seconds": 2.1333333333333333,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      },
+      {
+        "segment": 5,
+        "distance": 0.447213595499958,
+        "settled_at_seconds": 2.1333333333333333,
+        "settling_censored": false,
+        "normalized_overshoot": 0
+      }
+    ]
+  },
+  "candidate_scales": [
+    0.25,
+    0.5
+  ],
+  "checks": {
+    "instantaneous_baseline": true,
+    "all_values_bounded": true,
+    "seeded_commands_reproducible": true,
+    "at_least_one_candidate_meets_preregistered_targets": true
+  },
+  "engineering_run_passed": true,
+  "hypothesis_outcome": "supported_within_preregistered_synthetic_targets",
+  "hypothesis_scope": "A supported candidate is only a promising engineering setting on one synthetic task, not evidence of user benefit.",
+  "human_validation": "not_run",
+  "touchdesigner_runtime": "not_run",
+  "mediapipe_live_inference": "not_run",
+  "aigc_generation": "not_run",
+  "next_iteration": "Use passing scale 0.25 to train and test an action-conditioned transition predictor on held-out input sequences."
+}
